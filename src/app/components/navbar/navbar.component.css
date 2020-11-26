@@ -1,0 +1,37 @@
+.navbar-nav{
+  float: right;
+}
+.navbar-nav{
+  background-color: rgba(0, 0, 0, 0.322);
+  margin-right: 20px;
+  text-align: center;
+}
+.navbar-nav li{
+  border-right: 1px groove;
+  border-radius: 5px;
+  padding: 5px;
+}
+.navbar-nav li:hover{
+  background-color: black;
+}
+.navbar-nav li a{
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+
+}
+.navbar-brand{
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.322);
+  border-radius: 5px;
+  border:1px groove;
+  background-image: linear-gradient(red,yellow);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;font-weight: 800;
+}
+
+.navbar{
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVn7RWDB-u6tk8NLZ01-yUMxiPl82xP0-skSdpyOI-IN7BWyg3')
+}

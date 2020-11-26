@@ -1,0 +1,17 @@
+body{
+  background: url('https://coloredbrain.com/wp-content/uploads/2016/07/login-background.jpg') no-repeat fixed center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.card{
+  margin-top:30%;
+  margin-bottom: 50%;
+  background-color: aliceblue;
+}
+.btn{
+  background-image: linear-gradient(to right,yellow, green, red);
+  font-size: 20px;
+  color: black!important;
+}

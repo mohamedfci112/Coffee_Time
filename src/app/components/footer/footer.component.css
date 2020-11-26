@@ -1,0 +1,21 @@
+.footer{
+  clear: both;
+  background:url('https://static1.squarespace.com/static/542d8735e4b05b55f138e8e0/t/5521c967e4b09519434aea9f/1428274394426/?format=1500w') no-repeat center center fixed;
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#footer {
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: rgba(2,2,2,0.7);
+}
+.container .text-muted {
+margin: 20px 0;
+}
+.footertext {
+color: #ffffff;
+}

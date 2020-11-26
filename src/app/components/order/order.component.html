@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.0/css/mdb.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <app-navbar></app-navbar>
+  <section class="header">
+
+  </section>
+  <section class="title animated swing">
+    <div class="container">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <h1 class="text-center">Order Your Coffee Now!</h1>
+          <hr>
+      </div>
+    </div>
+  </section>
+  <section class="order">
+    <form class="container text-center form">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Select Type Of Coffee</label>
+        <select class="form-control" id="select" #select>
+          <option value="Caffè Americano">Caffè Americano</option>
+          <option value="Café Latte (or Café au lait)">Café Latte (or Café au lait)</option>
+          <option value="Cappuccino">Cappuccino</option>
+          <option value="Espresso">Espresso</option>
+          <option value="Flat White">Flat White</option>
+          <option value="Long Black">Long Black</option>
+          <option value="Macchiato (also known as a Piccolo Latte)">Macchiato (also known as a Piccolo Latte)</option>
+          <option value="Mochaccino">Mochaccino</option>
+          <option value="Irish Coffee">Irish Coffee</option>
+          <option value="Vienna">Vienna</option>
+          <option value="Affogato">Affogato</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Number Of Cups</label>
+        <input type="number" class="form-control" id="quantity" #quantity placeholder="Your Number of cups">
+      </div>
+      <button type="button" class="btn btn-outline-primary btn-block" (click)="Click(select,quantity)">Add To Voucher</button>
+      <a href="/order#sheet"><button type="button" class="btn btn-outline-danger btn-block">View Voucher</button></a>
+    </form>
+    <div class="container sheet" id="sheet">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="content" id="sheet">
+          <h2 class="text-center container">Your Voucher</h2>
+          <div class="table-responsive">
+            <form>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let al of all; let i of index">
+                    <td #di1>{{al[0]}}</td>
+                      <input #di1 type="hidden" name="coffee" value="{{al[0]}}" />
+                    <td #di2>{{al[1]}}</td>
+                      <input #di2 type="hidden" name="quantity" value="{{al[1]}}" />
+                      <td><button type="button" (click)="deleteItem(di1,di2,$event)" class="btn btn-danger">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="form-group">
+                <label for="quantity">Your Phone Number</label>
+                <input type="tel" (keyup)="phonekeyup($event)" class="form-control" id="phone" #ph placeholder="Enter Your Phone Number" required>
+                <h5 class="alert alert-danger {{phoneerror}}">Please Your Number Required !</h5>
+              </div>
+              <!-- Button trigger modal -->
+              <button type="button" mdbBtn color="primary" class="relative waves-light btn btn-block" (click)="basicModal.show()" mdbWavesEffect>Select Your Location Now!</button>
+              <h5 class="alert alert-danger {{locerror}}">Please Your Location Required !</h5>
+              <br>
+              <button type="button" mdbBtn color="success" class="relative waves-light" mdbWavesEffect (click) = "send(ph)">Send Now!</button>
+              <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fluid" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                      <h4 class="modal-title w-100" id="myModalLabel">Coffee-Time Chart</h4>
+                    </div>
+                    <div class="modal-body">
+                      <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="maplocation($event)">
+                        <agm-marker [latitude]="lat" [longitude]="lng">
+                          <agm-info-window [disableAutoPan]="true">
+                            Hi, this is the location of <strong>Coffee-Time</strong>
+                          </agm-info-window>
+                        </agm-marker>
+                      </agm-map>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Done!</button>
+<!--                       <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save!</button>
+ -->                    </div>
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="lat" value="{{latLocation}}" />
+              <input type="hidden" name="lng" value="{{lngLocation}}" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+
+</body>
+</html>
